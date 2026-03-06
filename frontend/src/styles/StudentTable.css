@@ -1,0 +1,309 @@
+/* Student Table Styles - Black & White Theme */
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.students-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.students-table thead {
+  background: #000;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.students-table th {
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  border-bottom: 2px solid #000;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.students-table th.sortable {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.students-table th.sortable:hover {
+  background: #222;
+}
+
+.sort-icon {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.sort-icon.active {
+  opacity: 1;
+  color: #fff;
+}
+
+.students-table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.students-table tbody tr:hover {
+  background: #f9f9f9;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.students-table td {
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Column Styles */
+.student-number .badge {
+  display: inline-block;
+  padding: 4px 10px;
+  background: #e0e0e0;
+  color: #000;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.student-name {
+  font-weight: 600;
+  color: #000;
+}
+
+.email {
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.program {
+  color: #555;
+  max-width: 200px;
+}
+
+.year-level {
+  font-weight: 500;
+  color: #333;
+}
+
+.gender {
+  color: #666;
+}
+
+/* GPA Badge Styles */
+.gpa-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.gpa-badge.gpa-excellent {
+  background: #e8f5e9;
+  color: #1b5e20;
+  border-left: 3px solid #4caf50;
+}
+
+.gpa-badge.gpa-very-good {
+  background: #f1f8e9;
+  color: #33691e;
+  border-left: 3px solid #8bc34a;
+}
+
+.gpa-badge.gpa-good {
+  background: #fffde7;
+  color: #f57f17;
+  border-left: 3px solid #ffeb3b;
+}
+
+.gpa-badge.gpa-fair {
+  background: #fff3e0;
+  color: #e65100;
+  border-left: 3px solid #ff9800;
+}
+
+.gpa-badge.gpa-low {
+  background: #ffebee;
+  color: #b71c1c;
+  border-left: 3px solid #f44336;
+}
+
+/* Attendance Badge Styles */
+.attendance-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.attendance-badge.attendance-excellent {
+  background: #e8f5e9;
+  color: #1b5e20;
+  border-left: 3px solid #4caf50;
+}
+
+.attendance-badge.attendance-good {
+  background: #f1f8e9;
+  color: #33691e;
+  border-left: 3px solid #8bc34a;
+}
+
+.attendance-badge.attendance-fair {
+  background: #fff3e0;
+  color: #e65100;
+  border-left: 3px solid #ff9800;
+}
+
+.attendance-badge.attendance-poor {
+  background: #ffebee;
+  color: #b71c1c;
+  border-left: 3px solid #f44336;
+}
+
+/* Violations Badge Styles */
+.violations-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.violations-badge.violations-none {
+  background: #e8f5e9;
+  color: #1b5e20;
+  border-left: 3px solid #4caf50;
+}
+
+.violations-badge.violations-minor {
+  background: #f1f8e9;
+  color: #33691e;
+  border-left: 3px solid #8bc34a;
+}
+
+.violations-badge.violations-moderate {
+  background: #fff3e0;
+  color: #e65100;
+  border-left: 3px solid #ff9800;
+}
+
+.violations-badge.violations-major {
+  background: #ffebee;
+  color: #b71c1c;
+  border-left: 3px solid #f44336;
+}
+
+/* Status Badge Styles */
+.status-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: white;
+}
+
+.status-badge.status-enrolled {
+  background: #198754;
+}
+
+.status-badge.status-on-leave {
+  background: #ffc107;
+  color: #000;
+}
+
+.status-badge.status-graduated {
+  background: #6c757d;
+}
+
+.status-badge.status-dropped {
+  background: #dc3545;
+}
+
+/* Actions Column */
+.actions {
+  display: flex;
+  gap: 6px;
+}
+
+.action-btn {
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.action-btn.view-btn {
+  color: #000;
+  border-color: #000;
+}
+
+.action-btn.view-btn:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+.action-btn.edit-btn {
+  color: #000;
+  border-color: #000;
+}
+
+.action-btn.edit-btn:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .table-wrapper {
+    font-size: 0.85rem;
+  }
+
+  .students-table th,
+  .students-table td {
+    padding: 10px 8px;
+  }
+
+  .program {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .email,
+  .year-level,
+  .gender {
+    display: none;
+  }
+
+  .students-table th,
+  .students-table td {
+    padding: 8px 6px;
+    font-size: 0.8rem;
+  }
+
+  .action-btn {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+  }
+}
