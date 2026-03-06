@@ -1,6 +1,14 @@
 import { useState } from 'react'
 import '../styles/Login.css'
 
+// Default student credentials (stored locally)
+const DEFAULT_CREDENTIALS = {
+  'STU-2024-001': 'password123',
+  'STU-2024-002': 'password123',
+  'STU-2024-003': 'password123',
+  'STU-2024-004': 'password123'
+}
+
 function Login({ onLogin }) {
   const [studentNumber, setStudentNumber] = useState('')
   const [password, setPassword] = useState('')
@@ -29,8 +37,8 @@ function Login({ onLogin }) {
         return
       }
 
-      // Mock authentication - accept any valid student number
-      if (studentNumber.startsWith('STU-')) {
+      // Check credentials against default list
+      if (DEFAULT_CREDENTIALS[studentNumber] === password) {
         // Store in localStorage for persistence
         const studentData = {
           studentNumber,
@@ -41,7 +49,7 @@ function Login({ onLogin }) {
         
         onLogin(studentData)
       } else {
-        setError('Invalid student number format. Use STU-XXXX-XXX')
+        setError('Invalid student number or password')
         setLoading(false)
       }
     } catch (err) {
@@ -120,7 +128,12 @@ function Login({ onLogin }) {
         </button>
 
         <div className="login-footer">
-          <p>Demo Account: <strong>STU-2024-001</strong></p>
+          <p><strong>Default Credentials:</strong></p>
+          <p>Student: <strong>STU-2024-001</strong></p>
+          <p>Password: <strong>password123</strong></p>
+          <p style={{ marginTop: '12px', fontSize: '0.75rem' }}>
+            (Also works for STU-2024-002, STU-2024-003, STU-2024-004)
+          </p>
           <p className="login-note">
             This is a local authentication system. In production, this will integrate with your backend API.
           </p>
