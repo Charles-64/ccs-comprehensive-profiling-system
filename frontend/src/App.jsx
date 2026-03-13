@@ -1,11 +1,16 @@
 import './App.css'
 import { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import StudentDashboard from './components/StudentDashboard'
+import FacultyDashboard from './components/FacultyDashboard'
 import Login from './components/Login'
+import InstructionModule from './components/InstructionModule'
+import SchedulingModule from './components/SchedulingModule'
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [studentData, setStudentData] = useState(null)
+  const [facultyData, setFacultyData] = useState(null)
   const [loading, setLoading] = useState(true)
 
   // Check if user is already logged in on mount
@@ -65,13 +70,27 @@ function App() {
     )
   }
 
-  return isAuthenticated ? (
-    <StudentDashboard 
-      studentData={studentData} 
-      onLogout={handleLogout} 
-    />
-  ) : (
-    <Login onLogin={handleLogin} />
+  return (
+    <Router>
+      <Routes>
+        <Route path="/login" element={
+          isAuthenticated ? <Navigate to="/dashboard" /> : <Login onLogin={handleLogin} />
+        } />
+        <Route path="/dashboard" element={
+          isAuthenticated ? <StudentDashboard studentData={studentData} onLogout={handleLogout} /> : <Navigate to="/login" />
+        } />
+        <Route path="/faculty" element={
+          isAuthenticated ? <FacultyDashboard facultyData={facultyData} onLogout={handleLogout} /> : <Navigate to="/login" />
+        } />
+        <Route path="/instruction" element={
+          isAuthenticated ? <InstructionModule studentData={studentData} onLogout={handleLogout} /> : <Navigate to="/login" />
+        } />
+        <Route path="/scheduling" element={
+          isAuthenticated ? <SchedulingModule studentData={studentData} onLogout={handleLogout} /> : <Navigate to="/login" />
+        } />
+        <Route path="/" element={<Navigate to={isAuthenticated ? "/dashboard" : "/login"} />} />
+      </Routes>
+    </Router>
   )
 }
 

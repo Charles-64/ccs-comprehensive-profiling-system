@@ -3,20 +3,45 @@
   overflow-x: auto;
   border-radius: 8px;
   border: 1px solid #e0e0e0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
 }
 
 .students-table {
   width: 100%;
+  min-width: 1120px;
   border-collapse: collapse;
   background: white;
+  table-layout: fixed;
+  word-break: normal;
+  box-sizing: border-box;
 }
 
+.students-table th,
+.students-table td {
+  box-sizing: border-box;
+}
+
+
+/* Column width definitions */
+.col-student-number { width: 130px; }
+.col-name { width: 220px; }
+.col-email { width: 240px; }
+.col-program { width: 220px; }
+.col-year { width: 90px; }
+.col-gender { width: 110px; }
+.col-gpa { width: 110px; }
+.col-attendance { width: 120px; }
+.col-violations { width: 120px; }
+.col-status { width: 120px; }
+.col-actions { width: 140px; }
+
 .students-table thead {
-  background: #000;
-  color: white;
+  background: linear-gradient(135deg, #1f2b3d, #162033);
+  color: #f7fafc;
   position: sticky;
   top: 0;
   z-index: 10;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
 }
 
 .students-table th {
@@ -25,9 +50,16 @@
   font-weight: 600;
   font-size: 0.85rem;
   white-space: nowrap;
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  vertical-align: bottom;
+}
+
+.students-table th, .students-table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .students-table th.sortable {
@@ -36,6 +68,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
+  flex-wrap: nowrap;
 }
 
 .students-table th.sortable:hover {
@@ -64,9 +97,10 @@
 }
 
 .students-table td {
-  padding: 12px 16px;
+  padding: 12px 14px;
   font-size: 0.9rem;
   color: #333;
+  vertical-align: middle;
 }
 
 /* Column Styles */
@@ -296,9 +330,13 @@
     display: none;
   }
 
+  .students-table {
+    min-width: 900px;
+  }
+
   .students-table th,
   .students-table td {
-    padding: 8px 6px;
+    padding: 8px 10px;
     font-size: 0.8rem;
   }
 

@@ -15,6 +15,19 @@ function StudentTable({ students, sortConfig, onSort }) {
   return (
     <div className="table-wrapper">
       <table className="students-table">
+        <colgroup>
+          <col className="col-student-number" />
+          <col className="col-name" />
+          <col className="col-email" />
+          <col className="col-program" />
+          <col className="col-year" />
+          <col className="col-gender" />
+          <col className="col-gpa" />
+          <col className="col-attendance" />
+          <col className="col-violations" />
+          <col className="col-status" />
+          <col className="col-actions" />
+        </colgroup>
         <thead>
           <tr>
             <th onClick={() => handleHeaderClick('student_number')} className="sortable">

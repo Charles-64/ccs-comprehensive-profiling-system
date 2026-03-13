@@ -1,10 +1,12 @@
 import { useState, useMemo } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import '../styles/StudentDashboard.css'
 import StudentTable from './StudentTable'
 import FilterPanel from './FilterPanel'
 import SearchBar from './SearchBar'
 
 function StudentDashboard({ studentData, onLogout }) {
+  const location = useLocation()
   const [students, setStudents] = useState([
     // Mock data - will be replaced with API calls
     {
@@ -109,6 +111,7 @@ function StudentDashboard({ studentData, onLogout }) {
   })
 
   const [viewMode, setViewMode] = useState('table') // 'table' or 'grid'
+  const [isFilterOpen, setIsFilterOpen] = useState(false)
 
   // Filter and search logic
   const filteredAndSortedStudents = useMemo(() => {
@@ -218,8 +221,8 @@ function StudentDashboard({ studentData, onLogout }) {
     <div className="student-dashboard">
       <div className="dashboard-header">
         <div className="header-left">
-          <h1>Student Dashboard</h1>
-          <p className="subtitle">Comprehensive student management and profiling system</p>
+          <h1>CCS Comprehensive Profiling System</h1>
+          <p className="subtitle">Student management and academic profiling platform</p>
         </div>
         <div className="header-right">
           {studentData && (
@@ -238,8 +241,33 @@ function StudentDashboard({ studentData, onLogout }) {
         </div>
       </div>
 
+      <nav className="module-navigation">
+        <Link to="/dashboard" className={`nav-link ${location.pathname === '/dashboard' ? 'active' : ''}`}>
+          Student Dashboard
+        </Link>
+        <Link to="/faculty" className={`nav-link ${location.pathname === '/faculty' ? 'active' : ''}`}>
+          Faculty Dashboard
+        </Link>
+        <Link to="/instruction" className={`nav-link ${location.pathname === '/instruction' ? 'active' : ''}`}>
+          Instruction Module
+        </Link>
+        <Link to="/scheduling" className={`nav-link ${location.pathname === '/scheduling' ? 'active' : ''}`}>
+          Scheduling Module
+        </Link>
+      </nav>
+
       <div className="dashboard-container">
-        <aside className="filters-sidebar">
+        <aside className={`filters-sidebar ${isFilterOpen ? 'open' : ''}`}>
+          <div className="filters-header">
+            <h3>Filters</h3>
+            <button
+              className="close-filters"
+              onClick={() => setIsFilterOpen(false)}
+              aria-label="Close filters"
+            >
+              ✕
+            </button>
+          </div>
           <FilterPanel 
             filters={filters} 
             onFilterChange={handleFilterChange}
@@ -249,6 +277,14 @@ function StudentDashboard({ studentData, onLogout }) {
 
         <main className="dashboard-content">
           <div className="content-header">
+            <button
+              className="filter-toggle"
+              onClick={() => setIsFilterOpen(prev => !prev)}
+              aria-label="Toggle filters"
+            >
+              ☰ Filters
+            </button>
+
             <SearchBar 
               searchTerm={searchTerm}
               onSearchChange={setSearchTerm}
