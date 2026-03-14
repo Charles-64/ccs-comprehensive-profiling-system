@@ -8,7 +8,6 @@ import SearchBar from './SearchBar'
 function FacultyDashboard({ facultyData, onLogout }) {
   const location = useLocation()
   const [faculty, setFaculty] = useState([
-    // Mock data - will be replaced with API calls
     {
       faculty_id: 1,
       faculty_number: 'FAC-2024-001',
